@@ -3,8 +3,9 @@
 Ajopäiväkirja on työkalu myyntimiehen tai pienyrittäjän työ- ja yksityisajokilometrien seurantaan sekä raporttien luomiseen kirjanpitoa varten.
 </p>
 [Dokumentaatio](https://github.com/henrima/ajopaivakirja/blob/master/doc/Ajopaivakirja.pdf)  
- 
-
+   
+  
+  
 ### Staattiset näkymät
 [Etusivu](http://hcmalkki.users.cs.helsinki.fi/apk/)  
 [Kuluvan kuukauden ajotapahtumien listausja ajotapahtumien lisäys](http://hcmalkki.users.cs.helsinki.fi/apk/kuluvakk)  
