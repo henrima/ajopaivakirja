@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Kuluvan kuukauden ajotapahtumat</h1>
+
+<form class="form-inline btn-xs">
+    <div class="form-group-group">
+        <input type="text" class="form-control" placeholder="Pvm" id="pvm">
+        <input type="text" class="form-control" placeholder="Reitti" id="reitti">
+        <input type="text" class="form-control" placeholder="Kilometrit" id="kilometrit">
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Rek.nro <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">EBI-739</a></li>
+                <li><a href="#">BRS-568</a></li>
+            </ul>
+        </div>        
+        <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Yrit/Yks <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Yritysajo</a></li>
+                <li><a href="#">Yksityisajo</a></li>
+            </ul>
+        </div>
+        <input type="text" class="form-control" placeholder="Lisätiedot" id="lisatiedot">
+        <a href="#" class="btn btn-primary">Lisää</a>
+    </div>
+</form>
+
+<br><br>
+<!--
+<p>
+  <a href="#" class="btn btn-success">Lisää ajotapahtuma</a>
+</p>
+-->
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Pvm</th>
+            <th>Reitti</th>
+            <th>Kilometrit</th>
+            <th>Rekisterinumero</th>
+            <th>Yrit/Yks</th>
+            <th>Lisätiedot</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- Listataan pelit tähän -->
+        <tr>
+            <td>24.5.2015</td>
+            <td>Helsinki-Lahti-Helsinki</td>
+            <td>101588</td>
+            <td>EBI-739</td>
+            <td><label class="label label-danger">Yritys</label></td>
+            <td>Auton huolto, kirjanpitäjä, toimisto</td>
+            <th><a class="btn-info btn-sm" href="#">Muokkaa</a></th>
+        </tr>
+        <tr>
+            <td>21.5.2015</td>
+            <td>Helsinki-Lahti-Helsinki</td>
+            <td>101388</td>
+            <td>EBI-739</td>
+            <td><label class="label label-danger">Yritys</label></td>
+            <td>Auton huolto, kirjanpitäjä, toimisto</td>
+            <th><a class="btn-info btn-sm" href="#">Muokkaa</a></th>
+        </tr>
+        <tr>
+            <td>16.5.2015</td>
+            <td>Helsinki-Lahti-Helsinki</td>
+            <td>101188</td>
+            <td>EBI-739</td>
+            <td><label class="label label-success">Yksityis</label></td>
+            <td>Yksityinen käyttötarkoitus</td>
+            <th><a class="btn-info btn-sm" href="#">Muokkaa</a></th>
+        </tr>
+        <tr>
+            <td>7.5.2015</td>
+            <td>Helsinki-Lahti-Helsinki</td>
+            <td>100988</td>
+            <td>EBI-739</td>
+            <td><label class="label label-danger">Yritys</label></td>
+            <td>Auton huolto, kirjanpitäjä, toimisto</td>
+            <th><a class="btn-info btn-sm" href="#">Muokkaa</a></th>
+        </tr>        
+    </tbody>
+</table>
+{% endblock %}
