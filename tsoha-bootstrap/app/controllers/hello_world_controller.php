@@ -1,4 +1,5 @@
 <?php
+require 'app/models/kayttaja.php';
 
 class HelloWorldController extends BaseController {
 
@@ -25,8 +26,11 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        // Testaa koodiasi täällä
-        View::make('helloworld.html');
+      $pete = Kayttaja::find('hcmalkki');
+      $jores = Kayttaja::all();
+      // Kint-luokan dump-metodi tulostaa muuttujan arvon
+      Kint::dump($pete);
+      Kint::dump($jores);
     }
 
 }
