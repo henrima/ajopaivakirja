@@ -1,21 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 	
-  <h1>The Elder Scrolls V: Skyrim</h1>
+  <h1>{{kayttaja.username}}</h1>
   <!-- Painikkeet tähän -->
   <p>
     <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
   </p>
   <!-- Tiedot tulee listana tähän -->
   <ul>
-    <li><strong>Käyttäjänimi: </strong> 11.11.2011</li>
-    <li><strong>Nimi: </strong> Bethesda Softworks</li>
-    <li><strong>Sähköposti: </strong> 9.12.2014</li>
+    <li><strong>Nimi:</strong> {{kayttaja.name}}</li>
+    <li><strong>Sähköposti:</strong> {{kayttaja.email}}</li>
   </ul>
-  <!-- Kuvaus tulee tähän -->
-  <p>
-    The Elder Scrolls V: Skyrim on Bethesda Softworksin kehittämä ja vuonna 2011 Xbox 360:lle, PlayStation 3:lle ja Microsoft Windowsille julkaisema The Elder Scrolls -tietokoneroolipelisarjan videopeli. Skyrim on The Elder Scrolls -sarjan viides osa.
-  </p>
 
 
 {% endblock %}
