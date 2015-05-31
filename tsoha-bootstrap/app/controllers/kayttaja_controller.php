@@ -39,4 +39,9 @@ class KayttajaController extends BaseController{
     }
 
 
+    public static function nayta($username){
+    	$kayttaja = Kayttaja::find($username);
+    	View::make('kayttaja/nayta.html', array('kayttaja' => $kayttaja));
+    }
+
 }

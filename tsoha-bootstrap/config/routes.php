@@ -16,9 +16,9 @@ $routes->post('/kayttaja', function(){
   	KayttajaController::tallenna();
 });
 
-//$routes->get('/kayttaja/:username', function($username){
-//  	KayttajaController::nayta($username);
-//});
+$routes->get('/kayttaja/:username', function($username){
+ 	KayttajaController::nayta($username);
+});
 
 
 $routes->get('/kuluvakk', function() {
