@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Käyttäjät</h1>
+
+<br><br>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Käyttänimi</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for kayttaja in kayttajat %}
+        <tr>
+            <td>{{kayttaja.username}}</td>
+            <td><a class="btn-danger btn-sm" href="#">Poista</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,12 +1,25 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
+    KayttajaController::login();
+});
+
+$routes->get('/kayttajat', function() {
+    KayttajaController::index();
 });
 
 $routes->get('/rekisteroidy', function() {
-    HelloWorldController::rekisteroidy();
+    KayttajaController::rekisteroidy();
 });
+
+$routes->post('/kayttaja', function(){
+  	KayttajaController::tallenna();
+});
+
+//$routes->get('/kayttaja/:username', function($username){
+//  	KayttajaController::nayta($username);
+//});
+
 
 $routes->get('/kuluvakk', function() {
     HelloWorldController::kuluvakk();
@@ -20,7 +33,7 @@ $routes->get('/ajoneuvot', function() {
     HelloWorldController::ajoneuvot();
 });
 
-
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
+

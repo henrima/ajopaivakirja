@@ -1,4 +1,0 @@
-{
-  "cmd": ["bash", "/Users/henri/git-projs/ajopaivakirja/tsoha-bootstrap/deploy.sh"],
-  "selector" : "source.shell"
-}

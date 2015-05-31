@@ -6,6 +6,18 @@ class Kayttaja extends BaseModel{
     parent::__construct($attributes);
   }
 
+  public function save(){
+    // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
+    $query = DB::connection()->prepare('INSERT INTO Kayttaja (username, password, name, email) VALUES (:username, :password, :name, :email) RETURNING username');
+    // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
+    $query->execute(array('username' => $this->username, 'password' => $this->password, 'name' => $this->name, 'email' => $this->email));
+    // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
+    $row = $query->fetch();
+  
+    // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
+    $this->username = $row['username'];
+  }
+
   public static function all(){
     // Alustetaan kysely tietokantayhteydellämme
     $query = DB::connection()->prepare('SELECT * FROM Kayttaja');
@@ -26,7 +38,7 @@ class Kayttaja extends BaseModel{
       ));
     }
 
-    return $games;
+    return $kayttajat;
   }
 
   public static function find($username){
