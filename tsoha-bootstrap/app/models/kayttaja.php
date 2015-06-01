@@ -25,12 +25,12 @@ class Kayttaja extends BaseModel{
     $query->execute();
     // Haetaan kyselyn tuottamat rivit
     $rows = $query->fetchAll();
-    $games = array();
+    $kayttajat = array();
 
     // Käydään kyselyn tuottamat rivit läpi
     foreach($rows as $row){
       // Tämä on PHP:n hassu syntaksi alkion lisäämiseksi taulukkoon :)
-      $games[] = new Kayttaja(array(
+      $kayttajat[] = new Kayttaja(array(
         'username' => $row['username'],
         'password' => $row['password'],
         'name' => $row['name'],
