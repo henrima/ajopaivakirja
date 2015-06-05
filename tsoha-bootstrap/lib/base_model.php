@@ -20,10 +20,19 @@
       $errors = array();
 
       foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+        4
       }
 
       return $errors;
     }
 
+    public function validate_string_not_null($string) {
+      if($string =='' || $string == null) {
+        return 'Nimi ei saa olla tyhjä!';
+      }
+    }
+
+
   }
+
+
