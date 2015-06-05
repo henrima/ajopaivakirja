@@ -14,12 +14,16 @@ class HelloWorldController extends BaseController {
         echo View::make('ajoneuvot.html');
     }
 
-    public static function sandbox() {
-      $pete = Kayttaja::find('hcmalkki');
-      $jores = Kayttaja::all();
-      // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      Kint::dump($pete);
-      Kint::dump($jores);
-    }
+  public static function sandbox(){
+    $jortma = new Kayttaja(array(
+        'username' => 'jortma2',
+        'password' => 'kekegugu',
+        'name' => '',
+        'email' => 'jortma@gugu.com' 
+    ));
+    $errors = $jortma->errors();
+
+    Kint::dump($errors);
+  }
 
 }

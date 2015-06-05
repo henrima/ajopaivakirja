@@ -20,7 +20,8 @@
       $errors = array();
 
       foreach($this->validators as $validator){
-        4
+        $metodi = $validator;
+        $errors[] = $this->{$metodi}();
       }
 
       return $errors;

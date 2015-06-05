@@ -4,11 +4,11 @@ class Kayttaja extends BaseModel{
 
   public function __construct($attributes){
     parent::__construct($attributes);
-    this->validators = array('validate_name');
+    $this->validators = array('validate_name');
   }
 
 
-  public static function validate_name(){
+  public function validate_name(){
     $errors = array();
     $errors[] = validate_string_not_null($this->name);
     return $errors;
