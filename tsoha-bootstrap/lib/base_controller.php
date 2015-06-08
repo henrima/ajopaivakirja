@@ -12,8 +12,10 @@
     }
 
     public static function check_logged_in(){
+      $errors = array();
+      $errors[] = 'Tämä toiminto vaatii kirjautumisen.';
       if(!isset($_SESSION['username'])){
-        Redirect::to('/login', array('message' => 'Tämä toiminto vaatii kirjautumisen.'));
+        Redirect::to('/login', array('errors' => $errors));
       }
 
     }

@@ -23,9 +23,11 @@ class KayttajaController extends BaseController{
         $params = $_POST;
 
         $kayttaja = Kayttaja::tunnista($params['username'], $params['password']);
+        $errors = array();
 
         if (!$kayttaja){
-            View::make('user/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'username' => $params['username']));
+            $errors[] = 'Väärä käyttäjätunnus tai salasana!';
+            View::make('kayttaja/login.html', array('errors' => $errors, 'username' => $params['username']));
         } else {
             $_SESSION['username'] = $kayttaja->username;
             Redirect::to('/kuluvakk', array('message' => 'Tervetuloa takaisin ' . $kayttaja->name . '!'));
