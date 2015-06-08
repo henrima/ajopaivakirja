@@ -1,10 +1,29 @@
 <?php
 
-$routes->get('/', function() {
+function check_logged_in(){
+    BaseController::check_logged_in();
+}
+
+$routes->get('/', 'check_logged_in', function() {
+    KayttajaController::index();
+});
+
+// KAYTTAJA :: LOGIN
+$routes->get('/login', function() {
     KayttajaController::login();
 });
 
-$routes->get('/kayttajat', function() {
+$routes->post('/login', function() {
+    KayttajaController::kasittele_login();
+});
+
+$routes->get('/logout', function() {
+    KayttajaController::logout();
+});
+
+
+// KAYTTAJA :: LISTAUS, REKISTEROITYMINEN, KAYT. SIVU, TALENNE (UUSI)
+$routes->get('/kayttajat', 'check_logged_in', function() {
     KayttajaController::index();
 });
 
@@ -16,20 +35,35 @@ $routes->post('/kayttaja', function(){
   	KayttajaController::tallenna();
 });
 
-$routes->get('/kayttaja/:username', function($username){
+$routes->get('/kayttaja/:username', 'check_logged_in', function($username){
  	KayttajaController::nayta($username);
 });
 
 
-$routes->get('/kuluvakk', function() {
+// KAYTTAJA :: MUOKKA JA POISTA
+$routes->get('/kayttaja/:username/muokkaa', 'check_logged_in', function($username){
+	KayttajaController::muokkaa($username);
+});
+
+$routes->post('/kayttaja/:username/muokkaa', 'check_logged_in', function($username){
+	KayttajaController::paivita($username);
+});
+
+$routes->post('/kayttaja/:username/poista', 'check_logged_in', function($username){
+	KayttajaController::poista($username);
+});
+
+
+
+$routes->get('/kuluvakk', 'check_logged_in', function() {
     HelloWorldController::kuluvakk();
 });
 
-$routes->get('/raportit', function() {
+$routes->get('/raportit', 'check_logged_in', function() {
     HelloWorldController::raportit();
 });
 
-$routes->get('/ajoneuvot', function() {
+$routes->get('/ajoneuvot', 'check_logged_in', function() {
     HelloWorldController::ajoneuvot();
 });
 

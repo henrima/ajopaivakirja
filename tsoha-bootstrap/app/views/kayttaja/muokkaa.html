@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+  {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+
+<h1>Muokkaa käyttäjätietojasi</h1>
+
+<!-- Kaikki lomakkeen elementit form-tagin sisään -->
+<form method="post" action="{{base_path}}/kayttaja/{{kayttaja.username}}/muokkaa">
+    <!-- Tekstikenttä käyttäjätunnukselle -->
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" class="form-control" name="username" placeholder="{{kayttaja.username}}" value="{{kayttaja.username}}">
+    </div>
+
+    <!-- Salasanakenttä salasanalle -->
+    <div class="form-group">
+        <label>Vanha salasana</label>
+        <input type="password" class="form-control" name="pwd_old"> 
+    </div>
+    <div class="form-group">
+        <label>Uusi salasana</label> (väh. 8 merkkiä, väh. 1 numero, väh. 1 kirjain)
+        <input type="password" class="form-control" name="password">
+    </div>
+    <div class="form-group">
+        <label>Uusi salasana uudelleen</label>
+        <input type="password" class="form-control" name="pwd_again">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger ">Tallenna muutokset</button>
+        <button type="submit" class="btn btn-default ">Tyhjennä</button>
+    </div>
+
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" class="form-control" name="name" placeholder="{{kayttaja.name}}" value="{{kayttaja.name}}">
+    </div>
+    <div class="form-group">
+        <label>Sähköposti</label>
+        <input type="email" class="form-control" name="email" placeholder="{{kayttaja.email}}" value="{{kayttaja.email}}">
+    </div>
+
+</form>
+
+{% endblock %}

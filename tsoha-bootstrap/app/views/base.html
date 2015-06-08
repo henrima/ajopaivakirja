@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <!-- Sovelluksen nimi -->
-                    <a class="navbar-brand" href="{{base_path}}">Ajopäiväkirja</a>
+                    <a class="navbar-brand" href="{{base_path}}/kuluvakk">Ajopäiväkirja</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navigation">
@@ -42,9 +42,15 @@
                         <li><a href="/apk/kuluvakk">Kuluva kuukausi</a></li>
                         <li><a href="/apk/raportit">Raportit</a></li>
                         <li><a href="/apk/ajoneuvot">Ajoneuvot</a></li>
+                        <li><a href="/apk/rekisteroidy">Lisää uusi käyttäjä</a></li>
+                        <li><a href="/apk/kayttajat">Listaa käyttäjät</a></li>
                     </ul>
                     <ul class="nav navbar-nav register-new">
-                        <li id="register-new"><a href="/apk/rekisteroidy">Lisää uusi käyttäjä</a></li>
+                        {% if user_logged_in %}
+                            <li id="register-new"><a href="/apk/logout">Kirjaudu ulos</a></li>
+                        {% else %}
+                            <li id="register-new"><a href="/apk/login">Kirjaudu sisään</a></li>    
+                        {% endif %}
                     </ul>
                 </div>
             </div>

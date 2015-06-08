@@ -1,25 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-<div class="alert alert-success">
-  {{message}} 
-</div>
+{% if message %}
+    <div class="alert alert-success">
+        {{message}} 
+    </div>
+{% endif %}
 
 <br><br>
 <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-<form>  
+<form method="post" action="{{base_path}}/login">  
     <!-- Tekstikenttä käyttäjätunnukselle -->
     <div class="form-group">
         <h1>Kirjaudu sisään</h1>
         <label>Käyttäjätunnus</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="username">
     </div>
 
     <!-- Salasanakenttä salasanalle -->
     <div class="form-group">
         <label>Salasana</label>
-        <input type="password" class="form-control">
+        <input type="password" class="form-control" name="password">
     </div>
 
     <div class="form-group">

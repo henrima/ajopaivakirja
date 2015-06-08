@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% if message %}
+    <div class="alert alert-success">
+        {{message}} 
+    </div>
+{% endif %}
+
 <h1>Käyttäjät</h1>
 
 <br><br>
@@ -15,10 +22,15 @@
     <tbody>
         {% for kayttaja in kayttajat %}
         <tr>
-            <td>{{kayttaja.username}}</td>
-            <td><a class="btn-danger btn-sm" href="#">Poista</a></td>
+            <td><a href="{{base_path}}/kayttaja/{{kayttaja.username}}">{{kayttaja.username}}</a></td>
+            <td>
+            <form method="post" action="{{base_path}}/kayttaja/{{kayttaja.username}}/poista"><button value="delete" type="submit" class="btn-danger btn-xs">Poista</button></form>
+            </td>           
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+
+
 {% endblock %}

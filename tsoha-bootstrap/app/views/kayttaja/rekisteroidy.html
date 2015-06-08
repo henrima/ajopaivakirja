@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+
+  {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
 <h1>Lisää uusi käyttäjä</h1>
 
 <!-- Kaikki lomakkeen elementit form-tagin sisään -->
@@ -12,8 +23,8 @@
 
     <!-- Salasanakenttä salasanalle -->
     <div class="form-group">
-        <label>Salasana</label>
-        <input type="password" class="form-control" name="password">
+        <label>Salasana</label> ( väh. 8 merkkiä, väh. 1 numero, väh. 1 kirjain )
+        <input type="password" class="form-control" name="password"> 
     </div>
     <div class="form-group">
         <label>Salasana uudelleen</label>
