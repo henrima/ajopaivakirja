@@ -2,10 +2,6 @@
 
 class HelloWorldController extends BaseController {
 
-    public static function kuluvakk() {
-        echo View::make('kuluvakk.html');
-    }
-
     public static function raportit() {
         echo View::make('raportit.html');
     }

@@ -22,7 +22,7 @@ $routes->get('/logout', function() {
 });
 
 
-// KAYTTAJA :: LISTAUS, REKISTEROITYMINEN, KAYT. SIVU, TALENNE (UUSI)
+// KAYTTAJA :: LISTAUS, REKISTEROITYMINEN, KAYT. SIVU, TALENNa (UUSI)
 $routes->get('/kayttajat', 'check_logged_in', function() {
     KayttajaController::index();
 });
@@ -40,7 +40,7 @@ $routes->get('/kayttaja/:username', 'check_logged_in', function($username){
 });
 
 
-// KAYTTAJA :: MUOKKA JA POISTA
+// KAYTTAJA :: MUOKKAA JA POISTA
 $routes->get('/kayttaja/:username/muokkaa', 'check_logged_in', function($username){
 	KayttajaController::muokkaa($username);
 });
@@ -54,10 +54,29 @@ $routes->post('/kayttaja/:username/poista', 'check_logged_in', function($usernam
 });
 
 
-
+// AJOTAPAHTUMA :: LISTAA, TALLENNA, MUOKKAA
 $routes->get('/kuluvakk', 'check_logged_in', function() {
-    HelloWorldController::kuluvakk();
+    AjotapahtumaController::kuluvakk();
 });
+
+$routes->post('/kuluvakk', 'check_logged_in', function(){
+    AjotapahtumaController::tallenna();
+});
+
+$routes->get('/ajotapahtuma/:id/muokkaa', 'check_logged_in', function($id){
+    AjotapahtumaController::muokkaa($id);
+});
+
+$routes->post('/ajotapahtuma/:id/muokkaa', 'check_logged_in', function($id){
+    AjotapahtumaController::paivita($id);
+});
+
+$routes->post('/ajotapahtuma/:id/poista', 'check_logged_in', function($id){
+    AjotapahtumaController::poista($id);
+});
+
+
+
 
 $routes->get('/raportit', 'check_logged_in', function() {
     HelloWorldController::raportit();

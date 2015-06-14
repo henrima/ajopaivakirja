@@ -2,7 +2,7 @@
 
 
 class Kayttaja extends BaseModel{
-  public $username, $password, $name, $email, $pwd_again;
+  public $id, $username, $password, $name, $email, $pwd_again;
 
 
   public function __construct($attributes){

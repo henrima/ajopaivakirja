@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+  {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+
+<h1>Muokkaa ajotapahtumaa</h1>
+
+<!-- Kaikki lomakkeen elementit form-tagin sisään -->
+<form class="form-inline btn-xs" method="post" action="{{base_path}}/ajotapahtuma/{{ajotapahtuma.id}}/muokkaa">
+    <div class="form-group-group">
+        <input type="text" class="form-control" placeholder="Pvm" id="pvm" name="pvm" placeholder="{{ajotapahtuma.pvm}}" value="{{ajotapahtuma.pvm}}">
+        <input type="text" class="form-control" placeholder="Reitti" id="reitti" name="reitti" placeholder="{{ajotapahtuma.reitti}}" value="{{ajotapahtuma.reitti}}">
+        <input type="text" class="form-control" placeholder="Kilometrit" id="kilometrit" name="kilometrit" placeholder="{{ajotapahtuma.kilometrit}}" value="{{ajotapahtuma.kilometrit}}">
+
+        <select name="fk_reknro" class="btn btn-warning dropdown-toggle" >
+            <option value="EBI-739">EBI-739</option>
+            <option value="BRS-568">BRS-568</option>
+        </select>
+
+        <select name="tarkoitus" class="btn btn-warning dropdown-toggle" >
+            <option value="yksityis">Yksityis</option>
+            <option value="yritys">Yritys</option>
+        </select>
+
+        <input type="text" class="form-control" name="lisatiedot" placeholder="{{ajotapahtuma.lisatiedot}}" value="{{ajotapahtuma.lisatiedot}}">
+        <button type="submit" class="btn btn-primary">Tallenna</a>
+    </div>
+</form>
+
+{% endblock %}
