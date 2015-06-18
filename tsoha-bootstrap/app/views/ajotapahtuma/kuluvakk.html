@@ -25,18 +25,6 @@
         <input type="text" class="form-control" placeholder="Reitti" id="reitti" name="reitti">
         <input type="text" class="form-control" placeholder="Kilometrit" id="kilometrit" name="kilometrit">
 
-
-        <!-- <div class="btn-group">
-            <button class="btn btn-warning dropdown-toggle" name="fk_reknro" data-toggle="dropdown">
-            Rek.nro
-            <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#" name="fk_reknro" value="EBI-739">EBI-739</a></li>
-                <li><a href="#" name="fk_reknro" value="BRS-568">BRS-568</a></li>
-            </ul>
-        </div> -->
-
         <select name="fk_reknro" class="btn btn-warning dropdown-toggle" >
             <option value="EBI-739">EBI-739</option>
             <option value="BRS-568">BRS-568</option>
@@ -47,37 +35,12 @@
             <option value="yritys">Yritys</option>
         </select>
 
-        <!-- <div class="btn-group">
-            <button class="btn btn-warning dropdown-toggle" name="tarkoitus" data-toggle="dropdown">
-            Yks./Yrit.
-            <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#" name="tarkoitus" value="yksityis">Yksityis</a></li>
-                <li><a href="#" name="tarkoitus" value="yritys">Yritys</a></li>
-            </ul>
-        </div> -->
-        <!--<div class="btn-group">
-            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Yrit/Yks <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" name="tarkoitus">
-                <li><a href="#" name="tarkoitus" value="yritysajo">Yritysajo</a></li>
-                <li><a href="#" value="yksityisajo">Yksityisajo</a></li>
-            </ul>
-        </div> -->
-
         <input type="text" class="form-control" placeholder="Lisätiedot" name="lisatiedot">
         <button type="submit" class="btn btn-primary">Lisää</a>
     </div>
 </form>
 
 <br><br>
-<!--
-<p>
-  <a href="#" class="btn btn-success">Lisää ajotapahtuma</a>
-</p>
--->
 
 <table class="table table-striped table-bordered">
     <thead>
@@ -99,7 +62,7 @@
         <tr>
             <td>{{ajo.pvm}}</td>
             <td>{{ajo.reitti}}</td>
-            <td>{{ajo.kilometrit}}</td>
+            <td><!--  {{ajo.kilometrit}} --></td>
             <td>{{ajo.fk_reknro}}</td>
             {% if ajo.tarkoitus == "yksityis" %}
                 <td><label class="label label-success">
@@ -111,7 +74,7 @@
                 {{ajo.tarkoitus}}</label></td>
            
             <td>{{ajo.lisatiedot}}</td>
-            <th><a class="btn-info btn-sm" href="{{base_path}}/ajotapahtuma/{{ajo.id}}/muokkaa">Muokkaa</a> <!--<a class="btn-danger btn-sm" href="{{base_path}}/ajotapahtuma/{{ajo.id}}/poista">Poista</a>--><form method="post" action="{{base_path}}/ajotapahtuma/{{ajo.id}}/poista"><button value="delete" type="submit" class="btn-danger btn-xs">Poista</button></form>
+            <th><a class="btn-info btn-sm" href="{{base_path}}/ajotapahtuma/{{ajo.id}}/muokkaa">Muokkaa</a><form method="post" action="{{base_path}}/ajotapahtuma/{{ajo.id}}/poista"><button value="delete" type="submit" class="btn-danger btn-xs">Poista</button></form>
             </th>
         </tr>  
     {% endfor %}     

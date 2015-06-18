@@ -20,8 +20,9 @@ CREATE TABLE Ajotapahtuma(
 	id SERIAL PRIMARY KEY,
 	pvm DATE NOT NULL,
 	reitti varchar(100) NOT NULL,
-	kilometrit varchar(7) NOT NULL,
 	tarkoitus varchar(400) NOT NULL,
 	lisatiedot varchar(400),
-	fk_reknro varchar(10) REFERENCES Ajoneuvo(rekisterinumero)
+	fk_reknro varchar(10) REFERENCES Ajoneuvo (rekisterinumero)
 );
+
+ALTER TABLE Ajoneuvo ADD COLUMN fk_id INTEGER REFERENCES Ajotapahtuma (id);
