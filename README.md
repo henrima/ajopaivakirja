@@ -5,14 +5,14 @@ Ajopäiväkirja on työkalu myyntimiehen tai pienyrittäjän työ- ja yksityisaj
 [Dokumentaatio](https://github.com/henrima/ajopaivakirja/blob/master/doc/Ajopaivakirja.pdf)  
    
 <br>
-#### Näkymät ( Testitunnus: keke / Salasana: gugugugu1 )
+#### Näkymät ( Testitunnus: keke / Salasana: gugugugu1 ):
 [Kuluvan kuukauden ajotapahtumien listausja, muokkaaminen, lisääminen ja poistaminen](http://hcmalkki.users.cs.helsinki.fi/apk/kuluvakk)  
 [Raporttien listaus ja uusien raporttien luominen](http://hcmalkki.users.cs.helsinki.fi/apk/raportit)  
 [Ajoneuvojen listaus, muokkaaminen, lisääminen ja poistaminen](http://hcmalkki.users.cs.helsinki.fi/apk/ajoneuvot)  
 [Uuden käyttäjän lisääminen](http://hcmalkki.users.cs.helsinki.fi/apk/rekisteroidy)  
 
 <br>
-####Seuraavaksi
+####Seuraavaksi toteutettavaa:
   * Raporttityökalun toiminallisuus ja tietokohde(nyt staattiset näkymät)
   * Käyttäjäkohtaiset tietosisällöt
   * Responsiivinen käyttöliittymä
