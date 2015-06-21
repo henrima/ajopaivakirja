@@ -27,7 +27,20 @@
       return $errors;
     }
 
+    // AJONEUVO VALIDAATTORIT
+    public function validate_duplicate_rekisterinumero(){
+      $errors = array();
+      $ajoneuvot = Ajoneuvo::all();
+      foreach($ajoneuvot as $auto) {
+        if(strcmp($this->rekisterinumero, $auto->rekisterinumero) == 0) {
+          $errors[] = "Kyseinen ajoneuvo on jo tallennettu.";
+        }
+      }
+      return $errors;
+    }
 
+
+    // KAYTTAJA VALIDAATTORIT
     public function validate_name(){
       $errors = array();
       if($this->name =='' || $this->name == null) {

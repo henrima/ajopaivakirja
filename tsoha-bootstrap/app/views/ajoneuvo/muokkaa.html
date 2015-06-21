@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+  {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+{% if message %}
+    <div class="alert alert-success">
+        {{message}} 
+    </div>
+{% endif %}
+
+<h1>Muokkaa ajotapahtumaa</h1>
+
+<!-- Kaikki lomakkeen elementit form-tagin sisään -->
+<form class="form-inline" method="post" action="{{base_path}}/ajoneuvot/{{ajoneuvo.id}}/muokkaa">
+    <div class="form-group-group">
+        <input type="text" class="form-control" placeholder="Merkki" id="merkki" name="merkki" placeholder="{{ajoneuvo.merkki}}" value="{{ajoneuvo.merkki}}">
+        <input type="text" class="form-control" placeholder="Malli" id="malli" name="malli" placeholder="{(ajoneuvo.malli}}" value="{{ajoneuvo.malli}}" value="{{ajoneuvo.malli}}">
+        <input type="text" class="form-control" placeholder="Rekisterinumero" id="rekisterinumero" name="rekisterinumero" placeholder="{{ajoneuvo.rekisterinumero}}" value="{{ajoneuvo.rekisterinumero}}" readonly>
+        <input type="text" class="form-control" placeholder="Kokonais kilometrit" id="km_kokonais" name="km_kokonais" placeholder="{{ajoneuvo.km_kokonais}}" value="{{ajoneuvo.km_kokonais}}">
+        <input type="text" class="form-control" placeholder="Lisätiedot" id="lisatiedot" name="lisatiedot" placeholder="{{ajoneuvo.lisatiedot}}" value="{{ajoneuvo.lisatiedot}}">
+         <button type="submit" class="btn btn-primary">Talleta</a>
+    </div>
+</form>
+
+{% endblock %}

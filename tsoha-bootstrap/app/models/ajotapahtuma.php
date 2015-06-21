@@ -1,26 +1,54 @@
 <?php
 
 class Ajotapahtuma extends BaseModel{
-	public $id, $pvm, $reitti, $kilometrit, $fk_reknro, $tarkoitus, $lisatiedot;
+	public $id, $pvm, $reitti, $km_lopussa, $fk_reknro, $tarkoitus, $lisatiedot;
 
   public function __construct($attributes){
     parent::__construct($attributes);
     $this->validators = array();
   }	
 
+  public static function kuluvakk(){
+    $query = DB::connection()->prepare('
+      SELECT *
+      FROM Ajotapahtuma
+      WHERE extract(month from now()::date) = extract(month from pvm::date)
+      ');
+
+    $query->execute();
+
+    // Haetaan kyselyn tuottamat rivit
+    $rows = $query->fetchAll();
+
+    $kuluvakk = array();
+
+    // Käydään kyselyn tuottamat rivit läpi
+    foreach($rows as $row){
+      // Tämä on PHP:n hassu syntaksi alkion lisäämiseksi taulukkoon :)
+      $kuluvakk[] = new Ajotapahtuma(array(
+        'id' => $row['id'],
+        'pvm' => $row['pvm'],
+        'reitti' => $row['reitti'],
+        'km_lopussa' => $row['km_lopussa'],
+        'fk_reknro' => $row['fk_reknro'],
+        'tarkoitus' => $row['tarkoitus'],
+        'lisatiedot' => $row['lisatiedot']
+      ));
+    }    
+
+    return $kuluvakk;
+  }
+
 
   public static function all(){
     // Alustetaan kysely tietokantayhteydellämme
     $query = DB::connection()->prepare('SELECT * FROM Ajotapahtuma');
-    //$kilometrit = DB::connection()->prepare('SELECT kilometrit FROM Ajoneuvo WHERE Ajoneuvo.fk_id = Ajotapahtuma.id');
 
     // Suoritetaan kysely
     $query->execute();
-    //$kilometrit->execute();
 
     // Haetaan kyselyn tuottamat rivit
     $rows = $query->fetchAll();
-    //$km = $kilometrit->fetchAll();
 
     $ajotapahtumat = array();
 
@@ -31,15 +59,25 @@ class Ajotapahtuma extends BaseModel{
         'id' => $row['id'],
         'pvm' => $row['pvm'],
         'reitti' => $row['reitti'],
-        //'kilometrit' => $kilometrit,
+        'km_lopussa' => $row['km_lopussa'],
         'fk_reknro' => $row['fk_reknro'],
         'tarkoitus' => $row['tarkoitus'],
         'lisatiedot' => $row['lisatiedot']
       ));
     }
-    //Kint::dump($ajotapahtumat);
+
+    function sortByDate( $a, $b ) {
+      if ($a->pvm != $b->pvm) {
+        return strtotime($b->pvm) - strtotime($a->pvm);  
+      }
+      return $b->km_lopussa - $a->km_lopussa;
+    }
+    usort($ajotapahtumat, "sortByDate");
+
     return $ajotapahtumat;
   }
+
+ 
 
   public static function find($id){
     $query = DB::connection()->prepare('SELECT * FROM Ajotapahtuma WHERE id = :id LIMIT 1');
@@ -51,7 +89,7 @@ class Ajotapahtuma extends BaseModel{
         'id' => $row['id'],
         'pvm' => $row['pvm'],
         'reitti' => $row['reitti'],
-        //'kilometrit' => $row['kilometrit'],
+        'km_lopussa' => $row['km_lopussa'],
         'fk_reknro' => $row['fk_reknro'],
         'tarkoitus' => $row['tarkoitus'],
         'lisatiedot' => $row['lisatiedot']
@@ -65,9 +103,9 @@ class Ajotapahtuma extends BaseModel{
 
   public function save(){
     // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
-    $query = DB::connection()->prepare('INSERT INTO Ajotapahtuma (pvm, reitti, fk_reknro, tarkoitus, lisatiedot) VALUES (:pvm::date, :reitti::text, :fk_reknro::text, :tarkoitus::text, :lisatiedot::text) RETURNING id');
+    $query = DB::connection()->prepare('INSERT INTO Ajotapahtuma (pvm, reitti, km_lopussa, fk_reknro, tarkoitus, lisatiedot) VALUES (:pvm::date, :reitti::text, :km_lopussa::integer, :fk_reknro::text, :tarkoitus::text, :lisatiedot::text) RETURNING id');
     // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
-    $query->execute(array('pvm' => $this->pvm, 'reitti' => $this->reitti, 'fk_reknro' => $this->fk_reknro, 'tarkoitus' => $this->tarkoitus, 'lisatiedot' => $this->lisatiedot));
+    $query->execute(array('pvm' => $this->pvm, 'reitti' => $this->reitti, 'km_lopussa' => $this->km_lopussa, 'fk_reknro' => $this->fk_reknro, 'tarkoitus' => $this->tarkoitus, 'lisatiedot' => $this->lisatiedot));
     // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
     $row = $query->fetch();
   
@@ -89,7 +127,7 @@ class Ajotapahtuma extends BaseModel{
   public function paivita(){
       $query = DB::connection()->prepare('UPDATE Ajotapahtuma SET id = :id, pvm = :pvm::date, reitti = :reitti::text, fk_reknro = :fk_reknro::text, tarkoitus = :tarkoitus::text, lisatiedot = :lisatiedot::text WHERE id = :id');
       // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
-      $query->execute(array('id' => $this->id, 'pvm' => $this->pvm, 'reitti' => $this->reitti, 'fk_reknro' => $this->fk_reknro, 'tarkoitus' => $this->tarkoitus, 'lisatiedot' => $this->lisatiedot));
+      $query->execute(array('id' => $this->id, 'pvm' => $this->pvm, 'reitti' => $this->reitti, 'km_lopussa' => $this->km_lopussa, 'fk_reknro' => $this->fk_reknro, 'tarkoitus' => $this->tarkoitus, 'lisatiedot' => $this->lisatiedot));
       // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
       $row = $query->fetch();
   

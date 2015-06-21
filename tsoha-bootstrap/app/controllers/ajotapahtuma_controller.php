@@ -3,10 +3,9 @@
 class AjotapahtumaController extends BaseController {
 
     public static function kuluvakk() {
-		$ajotapahtumat = Ajotapahtuma::all();
-
-		// views/kayttaja index.html $kayttajat listaus
-		View::make('ajotapahtuma/kuluvakk.html', array('ajotapahtumat' => $ajotapahtumat));
+		$ajotapahtumat = Ajotapahtuma::kuluvakk();
+        $ajoneuvot = Ajoneuvo::all();
+		View::make('ajotapahtuma/kuluvakk.html', array('ajotapahtumat' => $ajotapahtumat, 'ajoneuvot' => $ajoneuvot));
     }
 
 
@@ -17,7 +16,7 @@ class AjotapahtumaController extends BaseController {
     	$attributes = array(
         	'pvm' => $params['pvm'],
         	'reitti' => $params['reitti'],
-            'kilometrit' => $params['kilometrit'],
+            'km_lopussa' => $params['km_lopussa'],
         	'fk_reknro' => $params['fk_reknro'],
         	'tarkoitus' => $params['tarkoitus'],
         	'lisatiedot' => $params['lisatiedot']
@@ -27,7 +26,7 @@ class AjotapahtumaController extends BaseController {
 
         if(count($errors) < 1){
             $ajotapahtuma->save();
-            $ajotapahtumat = Ajotapahtuma::all();
+            $ajotapahtumat = Ajotapahtuma::kuluvakk();
             View::make('ajotapahtuma/kuluvakk.html', array('message' => 'Ajotapahtuma on lisätty tietokantaan.', 'ajotapahtumat' => $ajotapahtumat));
         } else {
             View::make('ajotapahtuma/kuluvakk.html', array('errors' => $errors, 'attributes' => $attributes));
@@ -48,7 +47,7 @@ class AjotapahtumaController extends BaseController {
             'id' => $id,
             'pvm' => $params['pvm'],
             'reitti' => $params['reitti'],
-            'kilometrit' => $params['kilometrit'],
+            'km_lopussa' => $params['km_lopussa'],
             'fk_reknro' => $params['fk_reknro'],
             'tarkoitus' => $params['tarkoitus'],
             'lisatiedot' => $params['lisatiedot']

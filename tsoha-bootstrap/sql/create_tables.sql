@@ -12,7 +12,7 @@ CREATE TABLE Ajoneuvo(
 	rekisterinumero varchar(10) UNIQUE NOT NULL,
 	merkki varchar(20) NOT NULL,
 	malli varchar(30) NOT NULL,
-	kilometrit INTEGER NOT NULL,
+	km_kokonais INTEGER NOT NULL,
 	lisatiedot varchar(400)
 );
 
@@ -20,6 +20,7 @@ CREATE TABLE Ajotapahtuma(
 	id SERIAL PRIMARY KEY,
 	pvm DATE NOT NULL,
 	reitti varchar(100) NOT NULL,
+	km_lopussa INTEGER NOT NULL,
 	tarkoitus varchar(400) NOT NULL,
 	lisatiedot varchar(400),
 	fk_reknro varchar(10) REFERENCES Ajoneuvo (rekisterinumero)

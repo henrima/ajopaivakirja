@@ -77,13 +77,33 @@ $routes->post('/ajotapahtuma/:id/poista', 'check_logged_in', function($id){
 
 
 
+// AJONEUVO :: LISTAA, MUOKKAA, POISTA
+$routes->get('/ajoneuvot', 'check_logged_in', function() {
+    AjoneuvoController::index();
+});
+
+$routes->post('/ajoneuvot', 'check_logged_in', function() {
+    AjoneuvoController::tallenna();
+});
+
+$routes->get('/ajoneuvot/:id/muokkaa', 'check_logged_in', function($id){
+    AjoneuvoController::muokkaa($id);
+});
+
+$routes->post('/ajoneuvot/:id/muokkaa', 'check_logged_in', function($id){
+    AjoneuvoController::paivita($id);
+});
+
+$routes->post('/ajoneuvot/:id/poista', 'check_logged_in', function($id){
+    AjoneuvoController::poista($id);
+});
+
+
+
+
 
 $routes->get('/raportit', 'check_logged_in', function() {
     HelloWorldController::raportit();
-});
-
-$routes->get('/ajoneuvot', 'check_logged_in', function() {
-    HelloWorldController::ajoneuvot();
 });
 
 $routes->get('/hiekkalaatikko', function() {

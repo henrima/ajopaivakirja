@@ -23,11 +23,12 @@
     <div class="form-group-group">
         <input type="text" class="form-control" placeholder="Pvm" id="pvm" name="pvm">
         <input type="text" class="form-control" placeholder="Reitti" id="reitti" name="reitti">
-        <input type="text" class="form-control" placeholder="Kilometrit" id="kilometrit" name="kilometrit">
+        <input type="text" class="form-control" placeholder="Kilometrit" id="km_lopussa" name="km_lopussa">
 
         <select name="fk_reknro" class="btn btn-warning dropdown-toggle" >
-            <option value="EBI-739">EBI-739</option>
-            <option value="BRS-568">BRS-568</option>
+            {% for auto in ajoneuvot %}
+                <option value="{{auto.rekisterinumero}}">{{auto.rekisterinumero}}</option>
+            {% endfor %}
         </select>
 
         <select name="tarkoitus" class="btn btn-warning dropdown-toggle" >
@@ -62,7 +63,7 @@
         <tr>
             <td>{{ajo.pvm}}</td>
             <td>{{ajo.reitti}}</td>
-            <td><!--  {{ajo.kilometrit}} --></td>
+            <td>{{ajo.km_lopussa}}</td>
             <td>{{ajo.fk_reknro}}</td>
             {% if ajo.tarkoitus == "yksityis" %}
                 <td><label class="label label-success">
@@ -74,7 +75,11 @@
                 {{ajo.tarkoitus}}</label></td>
            
             <td>{{ajo.lisatiedot}}</td>
-            <th><a class="btn-info btn-sm" href="{{base_path}}/ajotapahtuma/{{ajo.id}}/muokkaa">Muokkaa</a><form method="post" action="{{base_path}}/ajotapahtuma/{{ajo.id}}/poista"><button value="delete" type="submit" class="btn-danger btn-xs">Poista</button></form>
+            <th>
+            <button class="btn-info btn-xs" onclick="window.location.href='{{base_path}}/ajotapahtuma/{{ajo.id}}/muokkaa'">Muokkaa</button> 
+            <form method="post" action="{{base_path}}/ajotapahtuma/{{ajo.id}}/poista">
+                <button value="delete" type="submit" class="btn-danger btn-xs">Poista</button>
+            </form>
             </th>
         </tr>  
     {% endfor %}     
