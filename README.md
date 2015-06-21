@@ -12,7 +12,7 @@ Ajopäiväkirja on työkalu myyntimiehen tai pienyrittäjän työ- ja yksityisaj
 [Uuden käyttäjän lisääminen](http://hcmalkki.users.cs.helsinki.fi/apk/rekisteroidy)  
 <br>
 
-[Seuraavaksi]
+####
   * Raporttityökalun toiminallisuus ja tietokohde(nyt staattiset näkymät)
   * Käyttäjäkohtaiset tietosisällöt
   * Responsiivinen käyttöliittymä
