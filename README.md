@@ -13,6 +13,6 @@ Ajopäiväkirja on työkalu myyntimiehen tai pienyrittäjän työ- ja yksityisaj
 
 <br>
 ####Seuraavaksi toteutettavaa:
-  * Raporttityökalun toiminallisuus ja tietokohde(nyt staattiset näkymät)
+  * Raporttityökalun toiminallisuus ja tietokohde (nyt staattiset näkymät)
   * Käyttäjäkohtaiset tietosisällöt
   * Responsiivinen käyttöliittymä
