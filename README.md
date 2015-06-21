@@ -6,8 +6,8 @@ Ajopäiväkirja on työkalu myyntimiehen tai pienyrittäjän työ- ja yksityisaj
    
 <br>
 #### Näkymät ( Testitunnus: keke / Salasana: gugugugu1 ):
-[Etusivu](http://hcmalkki.users.cs.helsinki.fi/apk/)
-[Kuluvan kuukauden ajotapahtumien listausja, muokkaaminen, lisääminen ja poistaminen](http://hcmalkki.users.cs.helsinki.fi/apk/kuluvakk)  
+[Etusivu](http://hcmalkki.users.cs.helsinki.fi/apk/) 
+[Kuluvan kuukauden ajotapahtumien listausja, muokkaaminen, lisääminen ja poistaminen](http://hcmalkki.users.cs.helsinki.fi/apk/kuluvakk) 
 [Raporttien listaus ja uusien raporttien luominen](http://hcmalkki.users.cs.helsinki.fi/apk/raportit)  
 [Ajoneuvojen listaus, muokkaaminen, lisääminen ja poistaminen](http://hcmalkki.users.cs.helsinki.fi/apk/ajoneuvot)  
 [Uuden käyttäjän lisääminen](http://hcmalkki.users.cs.helsinki.fi/apk/rekisteroidy)  
