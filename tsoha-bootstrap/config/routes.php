@@ -5,7 +5,7 @@ function check_logged_in(){
 }
 
 $routes->get('/', 'check_logged_in', function() {
-    KayttajaController::index();
+    AjotapahtumaController::kuluvakk();
 });
 
 // KAYTTAJA :: LOGIN
